@@ -34,3 +34,19 @@ $ vagrant ssh
 ```
 [bargee@jubatus-barge ~]$ docker run -t --rm -v ~/jubatus-tutorial-python:/jubatus-tutorial-python -w /jubatus-tutorial-python --link jubatus-tutorial-python:jubatus ailispaw/jubatus-client python tutorial.py -s jubatus
 ```
+
+## Classifier
+
+- http://jubat.us/en/tutorial/classifier.html
+
+### Run Jubatus Server
+
+```
+[bargee@jubatus-barge ~]$ docker run -d --name jubatus-classifier -v /vagrant/classifier/gender.json:/gender.json ailispaw/jubatus jubaclassifier -f /gender.json
+```
+
+### Run Jubatus Client
+
+```
+[bargee@jubatus-barge ~]$ docker run -t --rm -v /vagrant/classifier:/jubatus-classifier -w /jubatus-classifier --link jubatus-classifier:jubatus ailispaw/jubatus-client python gender.py
+```
