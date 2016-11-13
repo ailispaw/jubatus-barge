@@ -50,3 +50,30 @@ $ vagrant ssh
 ```
 [bargee@jubatus-barge ~]$ docker run -t --rm -v /vagrant/classifier:/jubatus-classifier -w /jubatus-classifier --link jubatus-classifier:jubatus ailispaw/jubatus-client python gender.py
 ```
+
+## Anomaly
+
+- http://jubat.us/en/tutorial/anomaly.html
+
+### Download the dataset for the tutorial
+
+```
+[bargee@jubatus-barge ~]$ cd /vagrant/anomaly
+[bargee@jubatus-barge anomaly]$ wget http://kdd.ics.uci.edu/databases/kddcup99/kddcup.data_10_percent.gz
+[bargee@jubatus-barge anomaly]$ gunzip kddcup.data_10_percent.gz
+[bargee@jubatus-barge anomaly]$ mv kddcup.data_10_percent kddcup.data_10_percent.txt
+```
+
+### Run Jubatus Server
+
+```
+[bargee@jubatus-barge ~]$ docker run -d --name jubatus-anomaly -v /vagrant/anomaly/config.json:/config.json ailispaw/jubatus jubaanomaly -f /config.json
+```
+
+### Run Jubatus Client
+
+```
+[bargee@jubatus-barge ~]$ docker run -t --rm -v /vagrant/anomaly:/jubatus-anomaly -w /jubatus-anomaly --link jubatus-anomaly:jubatus ailispaw/jubatus-client python anomaly.py
+```
+
+Note) It takes so long to complete the job with a large amount of data.
