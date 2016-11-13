@@ -16,5 +16,3 @@ ENV PATH="${JUBATUS_HOME}/bin:${PATH}" \
     PKG_CONFIG_PATH="${JUBATUS_HOME}/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
 EXPOSE 9199
-
-ENTRYPOINT [ "jubaclassifier" ]

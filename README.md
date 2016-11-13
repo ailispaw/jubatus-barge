@@ -26,11 +26,11 @@ $ vagrant ssh
 ### Run Jubatus Server
 
 ```
-[bargee@jubatus-barge ~]$ docker run -d --name jubatus -v ~/jubatus-tutorial-python/config.json:/config.json ailispaw/jubatus -f /config.json
+[bargee@jubatus-barge ~]$ docker run -d --name jubatus-tutorial-python -v ~/jubatus-tutorial-python/config.json:/config.json ailispaw/jubatus jubaclassifier -f /config.json
 ```
 
 ### Run Jubatus Client
 
 ```
-[bargee@jubatus-barge ~]$ docker run -t --rm -v ~/jubatus-tutorial-python:/jubatus-tutorial-python -w /jubatus-tutorial-python --link jubatus ailispaw/jubatus-client python tutorial.py -s jubatus
+[bargee@jubatus-barge ~]$ docker run -t --rm -v ~/jubatus-tutorial-python:/jubatus-tutorial-python -w /jubatus-tutorial-python --link jubatus-tutorial-python:jubatus ailispaw/jubatus-client python tutorial.py -s jubatus
 ```
